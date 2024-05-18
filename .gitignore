@@ -1,6 +1,8 @@
 *.auto.tfvars
 /.terraform
-.terraform.lock.hcl
-terraform.tfstate
-terraform.tfstate*
+.terraform
+*.backup
+*.lock.hcl
+*.tfstate
+*.auto.tfvars
 vault_password
