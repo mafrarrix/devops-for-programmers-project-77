@@ -1,0 +1,8 @@
+REDMINE_DB_HOST: db-postgresql-fra1-20236-do-user-15694129-0.c.db.ondigitalocean.com
+REDMINE_DB_PORT: 25060
+REDMINE_DB_DATABASE: defaultdb
+REDMINE_DB_SSLMODE: require
+REDMINE_DB_USERNAME: doadmin
+portcontainer: 3000
+porthost: 8080
+
