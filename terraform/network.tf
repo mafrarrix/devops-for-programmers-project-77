@@ -10,7 +10,7 @@ resource "digitalocean_loadbalancer" "lb" {
   }
 
   healthcheck {
-    port     = 80
+    port     = 8080
     protocol = "http"
     path     = "/"
   }
