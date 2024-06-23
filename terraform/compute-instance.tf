@@ -16,12 +16,12 @@ resource "digitalocean_droplet" "web" {
     timeout     = "2m"
   }
 
-  provisioner "remote-exec" {
+/*   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
        "sudo apt update"
     ]
-  }
+  } */
 }
 
 

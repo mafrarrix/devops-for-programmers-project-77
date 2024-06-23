@@ -3,7 +3,7 @@ resource "digitalocean_loadbalancer" "lb" {
   region = "fra1"
 
   forwarding_rule {
-    entry_port     = 80
+    entry_port     = 8080
     entry_protocol = "http"
     target_port    = 8080
     target_protocol = "http"
@@ -16,4 +16,16 @@ resource "digitalocean_loadbalancer" "lb" {
   }
 
   droplet_ids = digitalocean_droplet.web.*.id
+}
+
+resource "digitalocean_domain" "domain" {
+  name = "mafrarrix.shop"
+}
+
+resource "digitalocean_record" "lb_dns" {
+  count = 2
+  domain = digitalocean_domain.domain.name
+  type   = "A"
+  name   = "web-${count.index}"
+  value = digitalocean_loadbalancer.lb.ip
 }
