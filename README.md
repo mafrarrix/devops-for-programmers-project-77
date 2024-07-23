@@ -5,5 +5,6 @@
 ## Installation guide
 
 ### Step 1 *Setup Terraform*
+
 ### Step 2 *Setup Ansible*
 ### Step 2 *Initialize project*
