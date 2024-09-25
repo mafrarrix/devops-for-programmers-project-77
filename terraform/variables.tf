@@ -43,3 +43,8 @@ variable "project_id" {
   type = string  
   sensitive = true
   }
+
+/* variable "public_key" {
+  type        = string
+  description = "Public SSH key"
+} */

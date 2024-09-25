@@ -21,6 +21,12 @@ resource "scaleway_instance_server" "web" {
   name  = "web-${count.index + 1}"
   type  = "DEV1-S"
   image = "ubuntu_focal"
+  zone = "fr-par-2"
+  tags = [ "hexlet" ]
+/*   user_data = <<-EOF
+            #!/bin/bash
+            echo ${var.public_key} >> /home/scw-user/.ssh/authorized_keys
+            EOF
 
   provisioner "remote-exec" {
     inline = [
@@ -29,13 +35,13 @@ resource "scaleway_instance_server" "web" {
     ]
 
     connection {
-      host        = self.public_ip[0].address # Usa public_ip o private_ip
+      host        = self.public_ip[0].address 
       user        = "root"
       type        = "ssh"
       private_key = file(var.pvt_key)
       timeout     = "2m"
     }
-  }
+  } */
 }
 
 

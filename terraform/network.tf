@@ -1,4 +1,4 @@
-resource "digitalocean_loadbalancer" "lb" {
+/* resource "digitalocean_loadbalancer" "lb" {
   name   = "example-lb"
   region = "fra1"
 
@@ -28,4 +28,4 @@ resource "digitalocean_record" "lb_dns" {
   type   = "A"
   name   = "web-${count.index}"
   value = digitalocean_loadbalancer.lb.ip
-}
+} */
