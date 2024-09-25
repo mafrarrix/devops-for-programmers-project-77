@@ -1,4 +1,4 @@
-resource "digitalocean_droplet" "web" {
+/* resource "digitalocean_droplet" "web" {
   count  = 2
   name   = "web-${count.index + 1}"
   image  = "ubuntu-20-04-x64"
@@ -7,6 +7,20 @@ resource "digitalocean_droplet" "web" {
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id
   ]
+  
+  provisioner "remote-exec" {
+    inline = [
+      "export PATH=$PATH:/usr/bin",
+       "sudo apt update"
+    ]
+  }
+} */
+
+resource "scaleway_instance_server" "web" {
+  count = 2
+  name  = "web-${count.index + 1}"
+  type  = "DEV1-S"  
+  image = "ubuntu_focal"     
 
   connection {
     host        = self.ipv4_address
@@ -15,13 +29,7 @@ resource "digitalocean_droplet" "web" {
     private_key = file(var.pvt_key)
     timeout     = "2m"
   }
-
-/*   provisioner "remote-exec" {
-    inline = [
-      "export PATH=$PATH:/usr/bin",
-       "sudo apt update"
-    ]
-  } */
 }
+
 
 
