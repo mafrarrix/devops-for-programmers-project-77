@@ -19,15 +19,22 @@
 resource "scaleway_instance_server" "web" {
   count = 2
   name  = "web-${count.index + 1}"
-  type  = "DEV1-S"  
-  image = "ubuntu_focal"     
+  type  = "DEV1-S"
+  image = "ubuntu_focal"
 
-  connection {
-    host        = self.ipv4_address
-    user        = "root"
-    type        = "ssh"
-    private_key = file(var.pvt_key)
-    timeout     = "2m"
+  provisioner "remote-exec" {
+    inline = [
+      "export PATH=$PATH:/usr/bin",
+      "sudo apt update"
+    ]
+
+    connection {
+      host        = self.public_ip[0].address # Usa public_ip o private_ip
+      user        = "root"
+      type        = "ssh"
+      private_key = file(var.pvt_key)
+      timeout     = "2m"
+    }
   }
 }
 
