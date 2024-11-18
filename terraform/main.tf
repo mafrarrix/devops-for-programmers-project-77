@@ -16,7 +16,7 @@ ${join("\n", [for instance in digitalocean_droplet.web : "${instance.name} ansib
 
 
 data "scaleway_instance_servers" "hexlet_instance" {
-  tags  = ["hexlet"]
+  tags = ["hexlet"]
 }
 
 resource "local_file" "inventory" {

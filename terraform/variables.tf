@@ -24,27 +24,39 @@ variable "db_username" {
 
 
 
-variable "access_key" {  
-  type = string  
+variable "access_key" {
+  type      = string
   sensitive = true
-  }
+}
 
-variable "secret_key" {  
-  type = string  
+variable "secret_key" {
+  type      = string
   sensitive = true
-  }
-  
-variable "organization_id" {  
-  type = string  
-  sensitive = true
-  }
+}
 
-variable "project_id" {  
-  type = string  
+variable "organization_id" {
+  type      = string
   sensitive = true
-  }
+}
 
-/* variable "public_key" {
+variable "project_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "public_key" {
   type        = string
   description = "Public SSH key"
-} */
+}
+
+variable "user_data" {
+  type = map(any)
+  default = {
+    "cloud-init" = <<-EOF
+    #cloud-config
+    apt-update: true
+    apt-upgrade: true
+    EOF
+    "foo"        = "bar"
+  }
+}

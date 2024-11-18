@@ -16,17 +16,21 @@
   }
 } */
 
+
+resource "scaleway_instance_ip" "web_ip" {
+  count     = 2
+  server_id = scaleway_instance_server.web[count.index].id
+}
+
 resource "scaleway_instance_server" "web" {
-  count = 2
-  name  = "web-${count.index + 1}"
-  type  = "DEV1-S"
-  image = "ubuntu_focal"
-  zone = "fr-par-2"
-  tags = [ "hexlet" ]
-/*   user_data = <<-EOF
-            #!/bin/bash
-            echo ${var.public_key} >> /home/scw-user/.ssh/authorized_keys
-            EOF
+  count     = 2
+  name      = "web-${count.index + 1}"
+  type      = "DEV1-S"
+  image     = "ubuntu_focal"
+  zone      = "fr-par-2"
+  tags      = ["hexlet"]
+  user_data = var.user_data
+  ip_id     = scaleway_instance_ip.web_ip.id
 
   provisioner "remote-exec" {
     inline = [
@@ -35,14 +39,19 @@ resource "scaleway_instance_server" "web" {
     ]
 
     connection {
-      host        = self.public_ip[0].address 
+      host        = scaleway_instance_server.web[count.index].private_ip
       user        = "root"
       type        = "ssh"
       private_key = file(var.pvt_key)
       timeout     = "2m"
+
     }
-  } */
+  }
 }
+
+
+
+
 
 
 
