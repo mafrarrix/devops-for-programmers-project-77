@@ -1,25 +1,8 @@
-/* resource "digitalocean_droplet" "web" {
-  count  = 2
-  name   = "web-${count.index + 1}"
-  image  = "ubuntu-20-04-x64"
-  region = "fra1"
-  size   = "s-2vcpu-2gb"
-  ssh_keys = [
-    data.digitalocean_ssh_key.terraform.id
-  ]
-  
-  provisioner "remote-exec" {
-    inline = [
-      "export PATH=$PATH:/usr/bin",
-       "sudo apt update"
-    ]
-  }
-} */
-
-
 resource "scaleway_instance_ip" "web_ip" {
   count     = 2
-  server_id = scaleway_instance_server.web[count.index].id
+ #server_id = scaleway_instance_server.web[count.index].id
+  #type = "dynamic" 
+  zone  = "fr-par-2"
 }
 
 resource "scaleway_instance_server" "web" {
@@ -28,11 +11,12 @@ resource "scaleway_instance_server" "web" {
   type      = "DEV1-S"
   image     = "ubuntu_focal"
   zone      = "fr-par-2"
-  tags      = ["hexlet"]
+  tags      = ["terraform instance"]
   user_data = var.user_data
-  ip_id     = scaleway_instance_ip.web_ip.id
+  ip_id     = scaleway_instance_ip.web_ip[count.index].id
+  
 
-  provisioner "remote-exec" {
+/*   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
       "sudo apt update"
@@ -46,7 +30,7 @@ resource "scaleway_instance_server" "web" {
       timeout     = "2m"
 
     }
-  }
+  } */
 }
 
 
