@@ -24,7 +24,6 @@ variable "db_username" {
 }
 
 
-
 variable "access_key" {
   type      = string
   sensitive = true
