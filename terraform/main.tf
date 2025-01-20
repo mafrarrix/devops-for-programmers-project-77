@@ -12,7 +12,6 @@ output "instance_ips_debug" {
   ]
 }
 
-#TODO: non estrae gli ip delle instanze e non li scrive nel file ansible
 resource "local_file" "inventory" {
   filename = "../ansible/inventory.ini"
   content  = <<-EOT

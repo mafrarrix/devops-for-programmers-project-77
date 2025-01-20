@@ -9,12 +9,17 @@ resource "scaleway_lb" "base" {
   type   = "LB-S"
 }
 
-# Chi riceverà il traffico
+# servers
 resource "scaleway_lb_backend" "backend01" {
   lb_id            = scaleway_lb.base.id
   name             = "backend01"
   forward_protocol = "http"
   forward_port     = "8080"
+
+  # Inserire il fatto che punta aun tag di istanze
+  server_ips = [
+    for instance in scaleway_instance_server.web : instance.public_ip
+  ]
   
 }
 
