@@ -6,18 +6,18 @@ output "instance_ips_debug" {
       public_ip  = instance.public_ip
       private_ip = instance.private_ip
       #status     = instance.status
-      type       = instance.type
-      zone       = instance.zone
+      type = instance.type
+      zone = instance.zone
     }
   ]
 }
 
 resource "local_file" "inventory" {
   filename = "../ansible/inventory.ini"
-  content  = <<-EOT
+  content = <<-EOT
 [webservers]
-${join("\n", [for instance in scaleway_instance_server.web : 
-    instance.public_ip != "" ? "${instance.name} ansible_host=${instance.public_ip} ansible_user=root" : "null"
+${join("\n", [for instance in scaleway_instance_server.web :
+  instance.public_ip != "" ? "${instance.name} ansible_host=${instance.public_ip} ansible_user=root" : "null"
 ])}
   EOT
 }

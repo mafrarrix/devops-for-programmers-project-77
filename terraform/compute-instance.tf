@@ -1,7 +1,5 @@
 resource "scaleway_instance_ip" "web_ip" {
-  count     = 2
- #server_id = scaleway_instance_server.web[count.index].id
-  #type = "dynamic" 
+  count = 2
   zone  = "fr-par-2"
 }
 
@@ -14,7 +12,13 @@ resource "scaleway_instance_server" "web" {
   tags      = ["terraform instance"]
   user_data = var.user_data
   ip_id     = scaleway_instance_ip.web_ip[count.index].id
-  
+
+
+  # Collegare il server web alla Private Network appropriata
+  private_network {
+    pn_id = scaleway_vpc_private_network.shared_vpc.id
+  }
+
 
   provisioner "remote-exec" {
     inline = [
