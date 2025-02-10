@@ -1,24 +1,30 @@
-export PASSWORD_VAULT=./vault_password
+VAULT_PASSWORD_FILE = $(CURDIR)/ansible_vault_password.txt
 
-setup: requirements install 
+.PHONY: encrypt_vault decrypt_vault edit_vault view_vault install-roles deploy-droplets pull-image run-container configure_datadog
 
-requirements:
-	ansible-galaxy install -r requirements.yml -vv
+encrypt_vault:
+	@ansible-vault encrypt --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/webservers/vault.yml
 
-install:
-	ansible-playbook --vault-password-file $(PASSWORD_VAULT)  playbook.yml -i inventory.ini -vv --tags untagged
+decrypt_vault:
+	@ansible-vault decrypt --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/droplets/vault.yml
 
-deploy:
-	ansible-playbook --vault-password-file $(PASSWORD_VAULT)  playbook.yml -i inventory.ini -vv --tags "deploy"
+edit_vault:
+	@ansible-vault edit --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/droplets/vault.yml
 
-refresh-params:
-	ansible-playbook --vault-password-file $(PASSWORD_VAULT)  playbook.yml -i inventory.ini -vv --tags "refresh-params"
+view_vault:
+	@ansible-vault view --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/droplets/vault.yml
 
-encrypt-vault:
-	ansible-vault encrypt group_vars/webservers/vault.yml
+install-roles:
+	@ansible-galaxy install -r requirements.yml
 
-decrypt-vault:
-	ansible-vault decrypt group_vars/webservers/vault.yml
+deploy-droplets:
+	@ansible-playbook -i inventory.ini -l droplets --user=root --vault-password-file ansible_vault_password.txt playbook.yml
 
-edit-vault:
-	ansible-vault edit group_vars/webservers/vault.yml
+pull-image:
+	@ansible-playbook -i inventory.ini -l droplets --user=root --vault-password-file ansible_vault_password.txt playbook.yml --tags pull_image
+
+run-container:
+	@ansible-playbook -i inventory.ini -l droplets --user=root --vault-password-file ansible_vault_password.txt playbook.yml --tags run_container
+
+configure_datadog:
+	@ansible-playbook -i inventory.ini -l droplets --user=root --vault-password-file ansible_vault_password.txt playbook.yml --tags configure_datadog

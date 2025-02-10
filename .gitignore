@@ -6,3 +6,4 @@
 *.tfstate
 *.auto.tfvars
 vault_password
+ansible_vault_password.txt
