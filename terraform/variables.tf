@@ -1,10 +1,3 @@
-
-variable "do_token" {
-  description = "Digitalocean token"
-  type        = string
-  sensitive   = true
-
-}
 variable "pvt_key" {
   description = "Path private key"
   type        = string
@@ -22,7 +15,6 @@ variable "db_username" {
   type        = string
   sensitive   = true
 }
-
 
 variable "access_key" {
   type      = string

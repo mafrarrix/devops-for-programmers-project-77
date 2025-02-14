@@ -1,9 +1,6 @@
 ---
 - hosts: webservers
   become: yes
-  vars:
-    load_balancer:
-      external_port: 8080
   roles:
     - geerlingguy.docker
     - docker_install

@@ -1,3 +1,9 @@
+---
+load_balancer:
+  external_port: 8080
+
+datadog_api_key: "{{Obfuscation.datadog_api_key}}"
+datadog_site: "datadoghq.eu"
 datadog_checks:
   process:
     init_config:

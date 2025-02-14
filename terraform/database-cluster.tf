@@ -5,8 +5,8 @@ resource "scaleway_rdb_instance" "main" {
   engine             = "PostgreSQL-15"
   is_ha_cluster      = false
   disable_backup     = true
-  user_name          = "my_initial_user"
-  password           = "thiZ_is_v&ry_s3cret"
+  user_name          = var.db_username
+  password           = var.db_password
   encryption_at_rest = true
   region             = "fr-par"
 

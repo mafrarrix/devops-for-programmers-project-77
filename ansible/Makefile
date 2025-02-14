@@ -3,10 +3,10 @@ VAULT_PASSWORD_FILE = $(CURDIR)/ansible_vault_password.txt
 .PHONY: encrypt_vault decrypt_vault edit_vault view_vault install-roles deploy-droplets pull-image run-container configure_datadog
 
 encrypt_vault:
-	@ansible-vault encrypt --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/webservers/vault.yml
+	@ansible-vault encrypt  group_vars/webservers/vault.yml
 
 decrypt_vault:
-	@ansible-vault decrypt --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/droplets/vault.yml
+	@ansible-vault decrypt --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/webservers/vault.yml
 
 edit_vault:
 	@ansible-vault edit --vault-password-file=$(VAULT_PASSWORD_FILE) group_vars/droplets/vault.yml
