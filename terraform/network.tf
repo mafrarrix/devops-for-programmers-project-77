@@ -8,6 +8,7 @@ resource "scaleway_vpc_private_network" "shared_vpc" {
 # Creazione del bilanciatore di carico Scaleway
 resource "scaleway_lb_ip" "main" {
   zone = "fr-par-2"
+  reverse = "mafrarrix.me"
 }
 
 resource "scaleway_lb" "base" {
