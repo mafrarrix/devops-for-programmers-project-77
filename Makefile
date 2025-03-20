@@ -15,7 +15,7 @@ view_vault:
 install-roles:
 	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-galaxy install -r requirements.yml
 
-deploy-droplets:
+deploy:
 	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-playbook -i ansible/inventory.ini -l webservers --user=root  ansible/playbook.yml
 
 pull-image:
@@ -29,4 +29,6 @@ configure_datadog:
 
 full-playbook:
 	@ANSIBLE_CONFIG=./ansible/ansible.cfg ansible-playbook -i ansible/inventory.ini -l webservers  ansible/playbook.yml 
- 
+
+apply:
+	@make -C terraform apply
