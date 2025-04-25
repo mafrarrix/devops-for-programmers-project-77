@@ -35,20 +35,40 @@ If you don't have an existing SSH key, you can generate one by running the follo
 This will generate a new SSH key pair. The public key will be located in `~/.ssh/id_rsa.pub`.
 
 
-### *Scaleway*
-- In the scaleway dashboard, go to Settings > Security > SSH Keys.
-- Click on the Add SSH Key button.
-- Give your SSH key a name (e.g., "My SSH Key").
-- In the Public Key Content field, paste the content of your public key file (~/.ssh/id_rsa.pub).
-- Click Add SSH Key to save it.
+1. Clone the repository:
 
-Now you have an SSH key associated with your DigitalOcean account. You can use this key in your Terraform configuration to create Droplets. If you already had an existing id_rsa.pub key, you can simply upload it to your DigitalOcean account and proceed with using it.
+   ```https://github.com/mafrarrix/devops-for-programmers-project-77```
 
-### *Setup Terraform*
+2. Change into the project directory:
 
-### *Setup Ansible*
+   ```cd devops-for-programmers-project-77```
+
+3. Automate Configuration Setup
+
+To simplify the setup process, you can use an automated script to create the necessary configuration files and securely manage sensitive information. Follow these steps:
+
+- Run the setup script by executing the following command:
+
+```bash
+   make setup
+```
+The script will prompt you to enter your Ansible Vault password, DigitalOcean token, Datadog API key, and Datadog App key.
+
+Once you've provided the required information, the script will automatically generate the configuration files:
+- `ansible/ansible_vault_password.txt` with your Ansible Vault password.
+- `terraform/secrets.auto.tfvars` with your DigitalOcean token.
+- `~/devops-for-programmers-project-77/group_vars/webservers/vault.yml` with your Datadog API key and App key securely stored.
 
 ### *Initialize project*
+
+### *Destroying Infrastructure*
+
+To remove the created Droplet and associated resources, run the command:
+
+   ```make destroy```
+
+WARNING: This command will permanently delete the created Droplet and associated resources. Please be cautious when using this command.
+Makefile Commands
 
 
 ### License
