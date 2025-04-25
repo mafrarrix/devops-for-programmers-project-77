@@ -2,7 +2,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/mafrarrix/devops-for-programmers-project-77/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mafrarrix/devops-for-programmers-project-77/actions)
 
-In this project, we employ Terraform to provision infrastructure on Scaleway, including 2 droplets, 1 database, 1 load balancer, and 1 domain. Subsequently, we utilize Ansible to orchestrate the deployment of containerized applications. Specifically, we deploy Wiki.js as a Dockerized application and set up monitoring using Datadog.
+In this project, we employ Terraform to provision infrastructure on Scaleway, including 2 Scaleway Instance, 1 database, 1 load balancer, and 1 domain. Subsequently, we utilize Ansible to orchestrate the deployment of containerized applications. Specifically, we deploy Wiki.js as a Dockerized application and set up monitoring using Datadog.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ In this project, we employ Terraform to provision infrastructure on Scaleway, in
 ## Installation guide
 
 ### *Setting up SSH Key*
-Before running Terraform to create your Droplets, you need to ensure that you have an SSH key set up and associated with your Scaleway account. Here are the steps to do that:
+Before running Terraform to create your Scaleway Instance, you need to ensure that you have an SSH key set up and associated with your Scaleway account. Here are the steps to do that:
 
 1. **Check for Existing SSH Key (Optional):**
 
@@ -58,6 +58,31 @@ Once you've provided the required information, the script will automatically gen
 - `ansible/ansible_vault_password.txt` with your Ansible Vault password.
 - `terraform/secrets.auto.tfvars` with your Scaleway token.
 - `~/devops-for-programmers-project-77/group_vars/webservers/vault.yml` with your Datadog API key and App key securely stored.
+
+4. **Initialize the Infrastructure:** Run the terraform init command to initialize Terraform:
+
+   ```make init```
+
+5. **Apply Infrastructure Changes:** Run the terraform apply command to create a Droplet with Nginx installed on DigitalOcean:
+
+   ```make apply```
+
+After executing the terraform apply command, Terraform will provide you with information about the created Droplet, including its IP address.
+
+Open your web browser and visit the Droplet's IP address to see the default Nginx page.
+
+6. **Install Ansible Roles:** Before running the playbook, make sure you have the required Ansible roles installed. You can install>
+
+   ```bash
+   make install-roles
+   ```
+To access the newly created Scaleway Instance, you can connect using the following command: `ssh root@IP_address_of_your_droplet` You can find the IP address in either the inventory file located in the Ansible directory or within the DigitalOcean project.
+
+7. **Deploy Your Application to Scaleway Instance:** Deploy your application to the Scaleway Instance by executing the following command:
+
+    ```bash
+    make deploy
+    ```
 
 ## Deployed Application
 
