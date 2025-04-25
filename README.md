@@ -63,7 +63,7 @@ Once you've provided the required information, the script will automatically gen
 
 ### *Destroying Infrastructure*
 
-To remove the created Droplet and associated resources, run the command:
+To remove the created  resources, run the command:
 
    ```make destroy```
 
