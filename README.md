@@ -34,8 +34,8 @@ If you don't have an existing SSH key, you can generate one by running the follo
 
 This will generate a new SSH key pair. The public key will be located in `~/.ssh/id_rsa.pub`.
 
-### *Setup Digitalocean*
-- In the DigitalOcean dashboard, go to Settings > Security > SSH Keys.
+### *Scaleway*
+- In the scaleway dashboard, go to Settings > Security > SSH Keys.
 - Click on the Add SSH Key button.
 - Give your SSH key a name (e.g., "My SSH Key").
 - In the Public Key Content field, paste the content of your public key file (~/.ssh/id_rsa.pub).
