@@ -59,7 +59,11 @@ Once you've provided the required information, the script will automatically gen
 - `terraform/secrets.auto.tfvars` with your DigitalOcean token.
 - `~/devops-for-programmers-project-77/group_vars/webservers/vault.yml` with your Datadog API key and App key securely stored.
 
-### *Initialize project*
+## Deployed Application
+
+You can find the deployed application at the following link:
+
+- [Wiki.js](http://www.mafrarrix.shop/)
 
 ### *Destroying Infrastructure*
 
