@@ -104,8 +104,9 @@ Makefile Commands
 
 This project is licensed under the MIT License.
 
-[output_part1.webm](https://github.com/user-attachments/assets/f865336f-4939-424b-96d5-dae3c02912c3)
 
 [Video del 20-03-2025 22:13:24 terraform.webm](https://github.com/user-attachments/assets/1b4caf40-471c-4177-8b97-c1d5b105aff3)
+
+[output_part1.webm](https://github.com/user-attachments/assets/f865336f-4939-424b-96d5-dae3c02912c3)
 
 
