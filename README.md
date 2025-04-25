@@ -34,6 +34,7 @@ If you don't have an existing SSH key, you can generate one by running the follo
 
 This will generate a new SSH key pair. The public key will be located in `~/.ssh/id_rsa.pub`.
 
+
 ### *Scaleway*
 - In the scaleway dashboard, go to Settings > Security > SSH Keys.
 - Click on the Add SSH Key button.
