@@ -2,7 +2,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/mafrarrix/devops-for-programmers-project-77/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mafrarrix/devops-for-programmers-project-77/actions)
 
-In this project, we employ Terraform to provision infrastructure on DigitalOcean, including 2 droplets, 1 database, 1 load balancer, and 1 domain. Subsequently, we utilize Ansible to orchestrate the deployment of containerized applications. Specifically, we deploy Wiki.js as a Dockerized application and set up monitoring using Datadog.
+In this project, we employ Terraform to provision infrastructure on Scaleway, including 2 droplets, 1 database, 1 load balancer, and 1 domain. Subsequently, we utilize Ansible to orchestrate the deployment of containerized applications. Specifically, we deploy Wiki.js as a Dockerized application and set up monitoring using Datadog.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ In this project, we employ Terraform to provision infrastructure on DigitalOcean
 ## Installation guide
 
 ### *Setting up SSH Key*
-Before running Terraform to create your Droplets, you need to ensure that you have an SSH key set up and associated with your DigitalOcean account. Here are the steps to do that:
+Before running Terraform to create your Droplets, you need to ensure that you have an SSH key set up and associated with your Scaleway account. Here are the steps to do that:
 
 1. **Check for Existing SSH Key (Optional):**
 
@@ -52,11 +52,11 @@ To simplify the setup process, you can use an automated script to create the nec
 ```bash
    make setup
 ```
-The script will prompt you to enter your Ansible Vault password, DigitalOcean token, Datadog API key, and Datadog App key.
+The script will prompt you to enter your Ansible Vault password, Scaleway token, Datadog API key, and Datadog App key.
 
 Once you've provided the required information, the script will automatically generate the configuration files:
 - `ansible/ansible_vault_password.txt` with your Ansible Vault password.
-- `terraform/secrets.auto.tfvars` with your DigitalOcean token.
+- `terraform/secrets.auto.tfvars` with your Scaleway token.
 - `~/devops-for-programmers-project-77/group_vars/webservers/vault.yml` with your Datadog API key and App key securely stored.
 
 ## Deployed Application
