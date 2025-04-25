@@ -8,7 +8,7 @@ In this project, we employ Terraform to provision infrastructure on DigitalOcean
 
 - [Terraform](https://www.terraform.io/downloads.html) (install the latest version)
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) (install the latest version)
-- [DigitalOcean Account](https://www.digitalocean.com/) (sign up if you don't have one)
+- [Scaleway Account](https://www.scaleway.com/fr/) (sign up if you don't have one)
 - [Make](https://www.gnu.org/software/make/)
 
 
